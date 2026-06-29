@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LongAI · Intelligence Redesigned</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   LONGAI — Dark Luxury AI Landing Page
+   ═══════════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #05070a;
+  --card: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.06);
+  --border-light: rgba(255,255,255,0.10);
+  --text: #ebecf0;
+  --text-dim: #8a8f9e;
+  --text-muted: #555a66;
+  --accent: #6c5ce7;
+  --accent2: #a29bfe;
+  --glow: rgba(108,92,231,0.25);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ════════ Video Background ════════ */
+
+.video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(108,92,231,0.08) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(5,7,10,0.92) 0%, rgba(5,7,10,0.70) 30%, rgba(5,7,10,0.85) 70%, rgba(5,7,10,1) 100%);
+}
+
+/* animated orbs as fallback texture */
+.video-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 600px at 20% 30%, rgba(108,92,231,0.06) 0%, transparent 60%),
+    radial-gradient(circle 500px at 80% 70%, rgba(162,155,254,0.05) 0%, transparent 60%);
+  animation: orbPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes orbPulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ════════ Nav ════════ */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(5,7,10,0.9) 0%, transparent 100%);
+}
+
+.logo-mark {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 22px;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #fff 60%, var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  transition: color .2s;
+  letter-spacing: 0.3px;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  padding: 8px 22px;
+  border-radius: 40px;
+  background: var(--glass);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .2s;
+  letter-spacing: 0.3px;
+}
+.nav-cta:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.20);
+}
+
+/* ════════ Sections ════════ */
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* ════════ Hero ════════ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(108,92,231,0.25);
+  background: rgba(108,92,231,0.08);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 32px;
+  width: fit-content;
+}
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(52px, 8vw, 104px);
+  line-height: 1.0;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, #fff 30%, var(--accent2) 70%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--text-dim);
+  max-width: 520px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, var(--accent), #8344e5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  opacity: 0;
+  transition: opacity .35s;
+}
+
+.cta-primary:hover::before { opacity: 1; }
+.cta-primary span { position: relative; z-index: 1; }
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 40px;
+  background: var(--glass);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.cta-secondary:hover { background: rgba(255,255,255,0.08); }
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+
+.stat-number {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 32px;
+  background: linear-gradient(135deg, #fff 40%, var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
+
+/* ════════ Glass Card ════════ */
+
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px 44px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all .35s;
+}
+
+.glass-card:hover {
+  border-color: var(--border-light);
+  box-shadow: 0 8px 48px rgba(108,92,231,0.06);
+}
+
+/* ════════ Problem / Insight ════════ */
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.insight-card {
+  composes: glass-card;
+  padding: 40px 36px;
+}
+
+.insight-icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.insight-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.insight-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ════════ Solution ════════ */
+
+.solution {
+  text-align: center;
+}
+
+.solution h2 {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.solution .lead {
+  font-size: 16px;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto 48px;
+  font-weight: 300;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  text-align: left;
+}
+
+.cap-card {
+  composes: glass-card;
+  padding: 32px 28px;
+}
+
+.cap-card .cap-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(108,92,231,0.10);
+  border: 1px solid rgba(108,92,231,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.cap-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cap-card p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ════════ CTA Section ════════ */
+
+.cta-section {
+  text-align: center;
+  padding: 120px 48px;
+}
+
+.cta-glass {
+  composes: glass-card;
+  padding: 72px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 400px at 30% 50%, rgba(108,92,231,0.06) 0%, transparent 60%),
+    radial-gradient(circle 300px at 70% 50%, rgba(162,155,254,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-glass h2 {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(32px, 3.5vw, 48px);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.cta-glass p {
+  font-size: 15px;
+  color: var(--text-dim);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  font-weight: 300;
+  position: relative;
+}
+
+.cta-glass .cta-primary {
+  font-size: 15px;
+  padding: 16px 44px;
+}
+
+/* ════════ Footer ════════ */
+
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 48px 32px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255,255,255,0.03);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ════════ BlurText Animation ════════ */
+
+.blur-text {
+  display: inline;
+}
+
+.blur-text .bt-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blur-text .bt-word.revealed {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* stagger delays set by JS inline style */
+
+/* ════════ Responsive ════════ */
+
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  section { padding: 60px 20px; }
+  .insight-grid { grid-template-columns: 1fr; }
+  .capability-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 24px; }
+  .hero-cta-group { flex-direction: column; align-items: flex-start; }
+  .cta-section { padding: 60px 20px; }
+  .cta-glass { padding: 48px 24px; }
+  .glass-card { padding: 32px 24px; }
+}
+
+/* ════════ Reveal on scroll ════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ VIDEO BACKGROUND ═══ -->
+<div class="video-bg">
+  <!-- Replace src with your cinematic .mp4 -->
+  <video autoplay muted loop playsinline poster="">
+    <source src="" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="logo-mark">LongAI</div>
+  <div class="nav-links">
+    <a href="#insight">Approach</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#work">Work</a>
+    <a href="#contact" class="nav-cta">Begin →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero-tag">Reimagining intelligence</div>
+  <h1>
+    <span class="blur-text" id="heroTitle">
+      <span>Where</span> <span>vision</span> <span>meets</span><br>
+      <span class="gradient-text">artificial</span> <span class="gradient-text">intelligence</span>
+    </span>
+  </h1>
+  <p class="blur-text" id="heroDesc">
+    <span>We</span> <span>craft</span> <span>bespoke</span> <span>AI</span> <span>systems</span>
+    <span>for</span> <span>organizations</span> <span>that</span> <span>refuse</span> <span>to</span>
+    <span>think</span> <span>inside</span> <span>the</span> <span>box.</span>
+  </p>
+  <div class="hero-cta-group reveal">
+    <a href="#contact" class="cta-primary"><span>Start your project →</span></a>
+    <a href="#capabilities" class="cta-secondary">See capabilities</a>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="stat-item">
+      <span class="stat-number">12×</span>
+      <span class="stat-label">Faster iteration</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">94%</span>
+      <span class="stat-label">Accuracy gain</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">2.8M</span>
+      <span class="stat-label">Tokens processed</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSIGHT ═══ -->
+<section id="insight">
+  <div class="section-label reveal">The challenge</div>
+  <div class="insight-grid">
+    <div class="glass-card insight-card reveal">
+      <span class="insight-icon">△</span>
+      <h3>Fragmented intelligence</h3>
+      <p>Most organizations run on disconnected models, siloed data, and inconsistent reasoning — producing outputs that feel mechanical, not intelligent.</p>
+    </div>
+    <div class="glass-card insight-card reveal">
+      <span class="insight-icon">◇</span>
+      <h3>Lost in translation</h3>
+      <p>The gap between raw AI capability and real-world product is filled with prompts, fine-tuning, and duct tape. You deserve a system, not a workaround.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION ═══ -->
+<section class="solution" id="capabilities">
+  <div class="section-label reveal">What we build</div>
+  <h2 class="blur-text" id="solTitle">
+    <span>End-to-end</span> <span>AI</span> <span>systems</span><br>
+    <span>that</span> <span>think</span> <span>with</span> <span>you</span>
+  </h2>
+  <p class="lead reveal">From reasoning engines to autonomous agents — every system is designed, trained, and deployed as a cohesive intelligence layer, not a collection of API calls.</p>
+
+  <div class="capability-grid">
+    <div class="cap-card reveal">
+      <div class="cap-icon">⊞</div>
+      <h4>Reasoning Architecture</h4>
+      <p>Multi-agent orchestration, chain-of-thought routing, and adaptive inference pipelines that match complexity to context.</p>
+    </div>
+    <div class="cap-card reveal">
+      <div class="cap-icon">⊟</div>
+      <h4>Knowledge Systems</h4>
+      <p>Persistent memory layers, hybrid retrieval, and self-evolving knowledge graphs that grow with your organization.</p>
+    </div>
+    <div class="cap-card reveal">
+      <div class="cap-icon">⊡</div>
+      <h4>Agentic Workflows</h4>
+      <p>Autonomous agents with tool use, planning, and self-correction — deployed as reliable, observable production systems.</p>
+    </div>
+    <div class="cap-card reveal">
+      <div class="cap-icon">⊠</div>
+      <h4>Human Interface</h4>
+      <p>Conversational UIs, progressive disclosure, and intent routing that make complex AI feel like a conversation, not a console.</p>
+    </div>
+    <div class="cap-card reveal">
+      <div class="cap-icon">⊞</div>
+      <h4>Evaluation & Safety</h4>
+      <p>Red-teaming, adversarial testing, refusal calibration, and continuous monitoring — because production AI must be trustworthy.</p>
+    </div>
+    <div class="cap-card reveal">
+      <div class="cap-icon">⊟</div>
+      <h4>Infrastructure</h4>
+      <p>Latency-optimized serving, prompt caching strategies, cost-aware routing, and deployment pipelines built for scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK ═══ -->
+<section id="work">
+  <div class="section-label reveal">Selected work</div>
+  <div class="glass-card" style="padding:44px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+      <div class="reveal">
+        <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;color:var(--accent2);margin-bottom:6px">01</div>
+        <h4 style="font-size:15px;font-weight:600;margin-bottom:6px">Neural Search Platform</h4>
+        <p style="font-size:13px;color:var(--text-dim);font-weight:300">Hybrid retrieval system processing 50K+ queries daily with 94% accuracy.</p>
+      </div>
+      <div class="reveal">
+        <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;color:var(--accent2);margin-bottom:6px">02</div>
+        <h4 style="font-size:15px;font-weight:600;margin-bottom:6px">Autonomous Research Agent</h4>
+        <p style="font-size:13px;color:var(--text-dim);font-weight:300">Multi-agent system that ingests, analyzes, and synthesizes 1,000+ sources per week.</p>
+      </div>
+      <div class="reveal">
+        <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;color:var(--accent2);margin-bottom:6px">03</div>
+        <h4 style="font-size:15px;font-weight:600;margin-bottom:6px">Compliance Intelligence</h4>
+        <p style="font-size:13px;color:var(--text-dim);font-weight:300">LLM-powered regulatory analysis reducing review cycles from days to minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section" id="contact">
+  <div class="cta-glass reveal">
+    <h2 class="blur-text" id="ctaTitle">
+      <span>Ready</span> <span>to</span> <span>build</span><br>
+      <span>something</span> <span>remarkable?</span>
+    </h2>
+    <p>Every great system starts with a conversation. Tell us about the intelligence you need — we'll design the architecture.</p>
+    <a href="#" class="cta-primary"><span>Start the conversation →</span></a>
+  </div>
+</section>
+
+<footer>
+  © 2025 LongAI. Intelligence redesigned.
+</footer>
+
+<!-- ════════ JS ════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ═══════════════════════════════
+  // BlurText — word-by-word reveal
+  // ═══════════════════════════════
+
+  function initBlurText() {
+    document.querySelectorAll('.blur-text').forEach(container => {
+      // get original HTML, split into word tokens
+      const html = container.innerHTML;
+      // wrap each word in a span
+      const processed = html.replace(/(\S+)/g, (match, word) => {
+        return `<span class="bt-word">${word}</span>`;
+      });
+      container.innerHTML = processed;
+
+      const words = container.querySelectorAll('.bt-word');
+      const stagger = 60; // ms between each word
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            words.forEach((word, i) => {
+              setTimeout(() => {
+                word.classList.add('revealed');
+              }, i * stagger);
+            });
+            observer.unobserve(container);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(container);
+    });
+  }
+
+  // ═══════════════════════════════
+  // Reveal on scroll
+  // ═══════════════════════════════
+
+  function initReveal() {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  }
+
+  // ═══════════════════════════════
+  // Init
+  // ═══════════════════════════════
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initBlurText();
+    initReveal();
+  });
+
+})();
+</script>
+</body>
+</html>

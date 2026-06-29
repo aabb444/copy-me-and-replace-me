@@ -1,0 +1,6 @@
+flask>=3.0
+anthropic>=0.90
+httpx>=0.28
+chromadb>=1.5
+# 可选（用于 embeddings 增强）：
+# sentence-transformers
